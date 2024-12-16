@@ -2,6 +2,6 @@
 
 export const JobList = () => {
   return (
-    <p>This should contain all the jobs!</p>
+    <p>This should contain all of the jobs!</p>
   );
 };
