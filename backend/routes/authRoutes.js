@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   const { email, password } = req.body;
 
-  if (!password || password.length < 8) {
+  if (!password || password.length < 5) {
     return res.status(400).json({ error: "Password too short" });
   }
 
