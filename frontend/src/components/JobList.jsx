@@ -1,26 +1,22 @@
+import { useEffect, useState } from "react";
+import { api } from "../utils/api";
 // TODO: You have to edit this file
 
 export const JobList = () => {
-  const jobs = [
-    {
-      id: 1,
-      title: "Senior Software Engineer",
-      type: "Full-time",
-      salary: 120000,
-      description: "Join our engineering team to build scalable solutions...",
-      date: "2024-03-15T08:00:00.000Z",
-      skills: "React, Node.js, PostgreSQL",
-    },
-    {
-      id: 2,
-      title: "UX Designer",
-      type: "Contract",
-      salary: 90000,
-      description: "Looking for a creative designer to join our product team",
-      date: "2024-03-14T10:30:00.000Z",
-      skills: "Figma, User Research, Design Systems",
-    },
-  ];
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await api.jobs.getJobs();
+        setJobs(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchJobs();
+  }, []);
 
   return (
     <div>

@@ -22,19 +22,45 @@ export const api = {
 
   auth: {
     async register(email, password) {
-      // TODO
+      return api.request("auth/register", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
     },
 
     async login(email, password) {
-      // TODO
+      return api.request("auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
     },
 
     async logout() {
-      // TODO
+      return api.request("auth/logout", {
+        method: "POST",
+      });
     },
 
     async getMe() {
-      // TODO
+      return api.request("auth/me", {
+        method: "GET",
+      });
     },
   },
+
+  jobs: {
+    async postJob(jobData) {
+      return api.request("/jobs", {
+        method: "POST",
+        body: JSON.stringify(jobData),
+      });
+    },
+
+    async getJobs() {
+      return api.request("/jobs", {
+        method: "GET",
+      })
+    }
+  }
+  
 };
