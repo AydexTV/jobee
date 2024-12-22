@@ -59,8 +59,16 @@ export const api = {
     async getJobs() {
       return api.request("/jobs", {
         method: "GET",
-      })
-    }
-  }
-  
+      });
+    },
+  },
+
+  applications: {
+    async apply(applicationData) {
+      return api.request("/applications", {
+        method: "POST",
+        body: JSON.stringify(applicationData),
+      });
+    },
+  },
 };
