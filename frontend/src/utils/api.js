@@ -50,24 +50,45 @@ export const api = {
 
   jobs: {
     async postJob(jobData) {
-      return api.request("/jobs", {
+      return api.request("jobs", {
         method: "POST",
         body: JSON.stringify(jobData),
       });
     },
 
     async getJobs() {
-      return api.request("/jobs", {
+      return api.request("jobs", {
         method: "GET",
+      });
+    },
+  },
+
+  myJobs: {
+    async getMyJobs() {
+      return api.request("my-jobs", {
+        method: "GET",
+      });
+    },
+
+    async deleteJob(jobId) {
+      return api.request(`my-jobs`, {
+        method: "DELETE",
+        body: JSON.stringify({ job_id: jobId }),
       });
     },
   },
 
   applications: {
     async apply(applicationData) {
-      return api.request("/applications", {
+      return api.request("applications", {
         method: "POST",
         body: JSON.stringify(applicationData),
+      });
+    },
+
+    async getApplications() {
+      return api.request("applications", {
+        method: "GET",
       });
     },
   },
